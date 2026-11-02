@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Lanza Games makes small pixel games that run in your browser. Play Driftwood Dock, an incremental fishing game.">
+<meta name="description" content="Lanza Games makes small pixel games that run in your browser. Play Lanza Solitaire, a pixel card game, and Driftwood Dock, an incremental fishing game.">
 <meta property="og:title" content="Lanza Games">
-<meta property="og:description" content="Small pixel games that run in your browser. Now playing: Driftwood Dock.">
+<meta property="og:description" content="Small pixel games that run in your browser. Now playing: Lanza Solitaire and Driftwood Dock.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='2' height='7' fill='%23e2512a'/%3E%3Crect x='0' y='5' width='5' height='2' fill='%23e2512a'/%3E%3Crect x='5' y='2' width='1' height='3' fill='%23f2c14e'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%23f2c14e'/%3E%3C/svg%3E">
 <title>Lanza Games</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Pixelify+Sans:wght@400;500;600&family=Silkscreen&display=swap">
 <style>
-/* Layout: a studio shelf. Giant pixel wordmark over a strip of live water, then one featured game shown like a boxed cartridge, a gallery of its worlds, and a short note about the studio. */
+/* Layout: a studio shelf. Giant pixel wordmark over a strip of live water, then each game shown like a boxed cartridge (newest first), a gallery of Driftwood Dock's worlds, and a short note about the studio. */
 :root{
   --bg:#eef1f6; --surface:#ffffff; --sunk:#e1e6ef;
   --ink:#121829; --muted:#566080; --edge:#121829;
@@ -72,7 +72,10 @@ section{padding-block:72px 0}
 .sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 20px;margin-bottom:26px}
 .sechead h2{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,4.6vw,52px);line-height:.95;text-wrap:balance}
 .cart{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);background:var(--surface)}
-@media (max-width:860px){.cart{grid-template-columns:minmax(0,1fr)}}
+.cart + .cart{margin-top:44px}
+.cart.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr)}
+.cart.flip .shot{order:2}
+@media (max-width:860px){.cart, .cart.flip{grid-template-columns:minmax(0,1fr)} .cart.flip .shot{order:0}}
 .cart .shot{position:relative;background:var(--edge);line-height:0}
 .cart .shot img{width:100%;height:100%;object-fit:cover;object-position:left center;aspect-ratio:16/9}
 .badge{position:absolute;left:14px;top:14px;font-family:var(--f-label);font-size:11px;letter-spacing:.1em;text-transform:uppercase;line-height:1;background:var(--accent);color:var(--accent-ink);padding:7px 9px 6px;box-shadow:3px 3px 0 var(--edge)}
@@ -136,7 +139,7 @@ body{margin:0}
     <h1 class="word" aria-label="Lanza Games"><span>Lanza</span><span>Games</span></h1>
     <div class="lede">
       <p>Small pixel games that run in your browser. Open a tab, play for five minutes or five hours, and pick up where you left off.</p>
-      <span class="label">1 game out · more on the way</span>
+      <span class="label">2 games out · more on the way</span>
     </div>
     <div class="strip frame"><canvas id="strip" width="320" height="34" class="px" aria-hidden="true"></canvas></div>
   </div>
@@ -144,12 +147,33 @@ body{margin:0}
   <section id="games" class="wrap">
     <div class="sechead">
       <h2>Now playing</h2>
-      <span class="label">Game 01 · Released Nov 2026</span>
+      <span class="label">2 games · both free</span>
     </div>
     <article class="cart frame">
       <div class="shot">
+        <img class="px" src="shot-solitaire.png" alt="Lanza Solitaire: pixel playing cards laid out on a green felt table, with pixel-art Jack, Queen and King portraits." width="960" height="540">
+        <span class="badge">New · Game 02</span>
+      </div>
+      <div class="info">
+        <div class="tags"><span>Card game</span><span>Solitaire</span><span>Pixel art</span></div>
+        <h3>Lanza Solitaire</h3>
+        <p>The classic patience game, dealt with hand-drawn pixel cards. Build each suit from Ace to King, drag cards or just tap one to send it where it fits, and chase a faster time and a longer win streak.</p>
+        <dl class="facts">
+          <div><dt>Cards</dt><dd>52</dd></div>
+          <div><dt>Modes</dt><dd>2<small>draw 1 or 3</small></dd></div>
+          <div><dt>Undo</dt><dd>Unlimited</dd></div>
+          <div><dt>Price</dt><dd>Free</dd></div>
+        </dl>
+        <div class="actions">
+          <a class="play" href="lanza-solitaire.html"><i></i>Play Lanza Solitaire</a>
+          <span class="note">Works with a mouse or a touchscreen.</span>
+        </div>
+      </div>
+    </article>
+    <article class="cart frame flip">
+      <div class="shot">
         <img class="px" src="shot-pier.png" alt="Driftwood Dock: an angler in a yellow raincoat casting from a wooden pier, with a lighthouse on the horizon." width="960" height="540">
-        <span class="badge">Free · Out now</span>
+        <span class="badge">Game 01</span>
       </div>
       <div class="info">
         <div class="tags"><span>Incremental</span><span>Fishing</span><span>Pixel art</span></div>
@@ -189,14 +213,14 @@ body{margin:0}
   <section id="about" class="wrap about">
     <div>
       <h2>About the studio</h2>
-      <div class="slots" aria-label="Release shelf: one game released, two slots open">
-        <div class="slot on">01</div><div class="slot">02</div><div class="slot">03</div>
+      <div class="slots" aria-label="Release shelf: two games released, one slot open">
+        <div class="slot on">01</div><div class="slot on">02</div><div class="slot">03</div>
       </div>
     </div>
     <div class="copy">
       <p>Lanza Games makes small games you can play in a browser tab. No downloads, no accounts, no ads. Each one is built to be easy to start and hard to put down.</p>
-      <p>Driftwood Dock is the first release. Your progress is saved in your own browser, so come back whenever you like and your crew will have been fishing while you were gone.</p>
-      <p class="note">The next game is in the works. Check back here to see it when it lands.</p>
+      <p>Driftwood Dock was the first release, and Lanza Solitaire is the second. Both save in your own browser, so come back whenever you like: your crew will have been fishing while you were gone, and your half-finished hand of cards will still be on the table.</p>
+      <p class="note">Game 03 is in the works. Check back here to see it when it lands.</p>
     </div>
   </section>
 </main>

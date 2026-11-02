@@ -8,9 +8,10 @@ Live at **https://lanza-games.netlify.app**
 
 | File | What it is |
 | --- | --- |
-| `index.html` | The home page: logo, featured game, screenshots, about section |
+| `index.html` | The home page: logo, a cartridge for each game, screenshots, about section |
 | `driftwood-dock.html` | The playable Driftwood Dock game, served at `/driftwood-dock` |
-| `shot-*.png` | Screenshots of each fishing area, used on the home page |
+| `lanza-solitaire.html` | The playable Lanza Solitaire game, served at `/lanza-solitaire` |
+| `shot-*.png` | Screenshots used on the home page: each Driftwood Dock fishing area, plus `shot-solitaire.png` |
 
 Everything is plain HTML, CSS and JavaScript with no build step. Fonts load from Google Fonts.
 
@@ -42,4 +43,4 @@ Deploy history is at https://app.netlify.com/projects/lanza-games/deploys.
 2. Add a card for it in the `#games` section of `index.html`.
 3. Deploy.
 
-The game's own source lives in its own repo; the Driftwood Dock source is in the `driftwood-dock` repo.
+Each game's own source lives in its own repo (`driftwood-dock`, `lanza-solitaire`). The copy on this site is the same file plus a small "← Lanza Games" link at the top.
