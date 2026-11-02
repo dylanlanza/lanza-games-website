@@ -26,11 +26,15 @@ Then visit http://localhost:8000.
 
 ## Deploy
 
-The site is hosted on Netlify (project `lanza-games`). To publish changes from this folder:
+The site is hosted on Netlify (project `lanza-games`) and deploys automatically: every push to `main` publishes to https://lanza-games.netlify.app within a minute or so.
 
 ```bash
-npx netlify-cli deploy --prod --dir . --site 6d9988de-f232-465f-9985-7d7bb858e2d0
+git add -A
+git commit -m "Describe the change"
+git push
 ```
+
+Deploy history is at https://app.netlify.com/projects/lanza-games/deploys.
 
 ## Adding a game
 
